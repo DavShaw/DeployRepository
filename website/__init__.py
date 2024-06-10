@@ -16,7 +16,7 @@ def create_app():
     else:
         DB_PATH = DB_NAME
     
-    app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_NAME}"
+    app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_PATH}"
     db.init_app(app)
 
     from .views import views
