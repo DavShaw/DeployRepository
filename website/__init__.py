@@ -10,6 +10,12 @@ DB_NAME = "database.db"
 def create_app():
     app = Flask(__name__)
     app.config["SECRET_KEY"] = "123"
+
+    if 'VERCEL' in environ:
+        DB_PATH = path.join("/tmp",DB_NAME)
+    else:
+        DB_PATH = DB_NAME
+    
     app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_NAME}"
     db.init_app(app)
 
